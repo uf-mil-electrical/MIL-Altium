@@ -1,0 +1,12 @@
+# Ignore Altium PCB Project backup files
+*.PcbDoc.Zip
+*.SchDoc.Zip
+*.BomDoc.Zip
+*.PrjPcb.Zip
+*.LOG
+*.SchDocPreview
+
+# Ignore Altium Library backup files
+*.SchLib.Zip
+*.PcbLib.Zip
+*.LibPkg.Zip
