@@ -16,11 +16,11 @@ const
 function GetConfigFilePath(): String;
 begin
   // Store config in C:\Temp (should exist on all Windows systems)
-  Result := 'C:\Temp\' + CONFIG_FILE;
+  Result := 'C:\MIL-Altium\' + CONFIG_FILE;
 
   // Ensure the Temp directory exists
-  if not DirectoryExists('C:\Temp') then
-    CreateDir('C:\Temp');
+  if not DirectoryExists('C:\MIL-Altium') then
+    CreateDir('C:\MIL-Altium');
 end;
 
 function LoadRepoPath(): String;
@@ -141,7 +141,7 @@ begin
 
     ShowMessage('REPOSITORY CONFIGURATION:' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
                 '1. Navigate to your MIL-Altium repository ROOT folder' + Chr(13) + Chr(10) +
-                '2. Select ANY file in the root folder' + Chr(13) + Chr(10) +
+                '2. Select Crowned-Schwartz.png' + Chr(13) + Chr(10) +
                 '3. Click Open' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
                 'This only needs to be done once!');
 
