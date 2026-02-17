@@ -6,8 +6,7 @@
 // ============================================================================
 
 // ----------------------------------------------------------------------------
-// SHARED CONFIGURATION FUNCTIONS
-// These functions are used by all scripts below
+// CONFIGURATION CONSTANTS
 // ----------------------------------------------------------------------------
 
 const
@@ -113,21 +112,21 @@ var
   OpenDialog : TOpenDialog;
   TempPath : String;
   LastChar : String;
+  Response : Integer;
 begin
   // Check if we already have a valid path
   if IsRepoPathValid() then
   begin
     RepoPath := LoadRepoPath();
 
-    if Application.MessageBox(
-      'MIL-Altium repository path is already configured:' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      RepoPath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      'Do you want to change it?',
-      'MIL-Altium Configuration',
-      MB_YESNO + MB_ICONQUESTION
-    ) = IDNO then
+    Response := MessageDlg('MIL-Altium repository path is already configured:' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                           RepoPath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                           'Do you want to change it?',
+                           mtConfirmation, mbYesNo, 0);
+
+    if Response = mrNo then
     begin
-      Application.MessageBox('Configuration unchanged.', 'MIL-Altium Configuration', MB_OK + MB_ICONINFORMATION);
+      ShowMessage('Configuration unchanged.');
       Exit;
     end;
   end;
@@ -140,15 +139,11 @@ begin
     OpenDialog.Filter := 'All Files (*.*)|*.*';
     OpenDialog.InitialDir := 'C:\';
 
-    Application.MessageBox(
-      'REPOSITORY CONFIGURATION:' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      '1. Navigate to your MIL-Altium repository ROOT folder' + Chr(13) + Chr(10) +
-      '2. Select ANY file in the root folder' + Chr(13) + Chr(10) +
-      '3. Click Open' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      'This only needs to be done once!',
-      'MIL-Altium Configuration',
-      MB_OK + MB_ICONINFORMATION
-    );
+    ShowMessage('REPOSITORY CONFIGURATION:' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                '1. Navigate to your MIL-Altium repository ROOT folder' + Chr(13) + Chr(10) +
+                '2. Select ANY file in the root folder' + Chr(13) + Chr(10) +
+                '3. Click Open' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'This only needs to be done once!');
 
     if OpenDialog.Execute then
     begin
@@ -157,7 +152,7 @@ begin
     end
     else
     begin
-      Application.MessageBox('Configuration cancelled.', 'MIL-Altium Configuration', MB_OK + MB_ICONWARNING);
+      ShowMessage('Configuration cancelled.');
       Exit;
     end;
 
@@ -174,27 +169,19 @@ begin
   TempPath := RepoPath + 'Part Libraries\';
   if not DirectoryExists(TempPath) then
   begin
-    Application.MessageBox(
-      'Error: Part Libraries folder not found in:' + Chr(13) + Chr(10) +
-      RepoPath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      'Please ensure you selected a file in the MIL-Altium repository root.',
-      'Configuration Error',
-      MB_OK + MB_ICONERROR
-    );
+    ShowMessage('Error: Part Libraries folder not found in:' + Chr(13) + Chr(10) +
+                RepoPath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Please ensure you selected a file in the MIL-Altium repository root.');
     Exit;
   end;
 
   // Save the path
   SaveRepoPath(RepoPath);
 
-  Application.MessageBox(
-    'Configuration saved successfully!' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-    'Repository path: ' + RepoPath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-    'Config file location: ' + GetConfigFilePath() + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-    'All MIL-Altium scripts will now use this location.',
-    'Configuration Complete',
-    MB_OK + MB_ICONINFORMATION
-  );
+  ShowMessage('Configuration saved successfully!' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+              'Repository path: ' + RepoPath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+              'Config file location: ' + GetConfigFilePath() + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+              'All MIL-Altium scripts will now use this location.');
 end;
 
 // ----------------------------------------------------------------------------
@@ -232,12 +219,8 @@ begin
   // Check if repo path is configured
   if not IsRepoPathValid() then
   begin
-    Application.MessageBox(
-      'MIL-Altium repository path is not configured.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      'Please run the "InitializeMILAltiumConfig" script first.',
-      'Configuration Required',
-      MB_OK + MB_ICONWARNING
-    );
+    ShowMessage('MIL-Altium repository path is not configured.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Please run the "InitializeMILAltiumConfig" script first.');
     Exit;
   end;
 
@@ -255,13 +238,9 @@ begin
   InstalledCount := 0;
   FailedCount := 0;
 
-  Application.MessageBox(
-    'Starting library import...' + Chr(13) + Chr(10) +
-    'Part Libraries folder: ' + PartLibrariesPath + Chr(13) + Chr(10) +
-    'Installing 15 libraries...',
-    'MIL-Altium Library Import',
-    MB_OK + MB_ICONINFORMATION
-  );
+  ShowMessage('Starting library import...' + Chr(13) + Chr(10) +
+              'Part Libraries folder: ' + PartLibrariesPath + Chr(13) + Chr(10) +
+              'Installing 15 libraries...');
 
   for i := 0 to 14 do
   begin
@@ -285,21 +264,13 @@ begin
   RunProcess('IntegratedLibrary:RefreshInstalledLibraries');
 
   if InstalledCount > 0 then
-    Application.MessageBox(
-      'Library import complete!' + Chr(13) + Chr(10) +
-      'Successfully installed: ' + IntToStr(InstalledCount) + ' libraries' + Chr(13) + Chr(10) +
-      'Failed: ' + IntToStr(FailedCount) + ' libraries',
-      'Import Complete',
-      MB_OK + MB_ICONINFORMATION
-    )
+    ShowMessage('Library import complete!' + Chr(13) + Chr(10) +
+                'Successfully installed: ' + IntToStr(InstalledCount) + ' libraries' + Chr(13) + Chr(10) +
+                'Failed: ' + IntToStr(FailedCount) + ' libraries')
   else
-    Application.MessageBox(
-      'Library import failed!' + Chr(13) + Chr(10) +
-      'No libraries were installed.' + Chr(13) + Chr(10) +
-      'Failed: ' + IntToStr(FailedCount) + ' libraries',
-      'Import Failed',
-      MB_OK + MB_ICONERROR
-    );
+    ShowMessage('Library import failed!' + Chr(13) + Chr(10) +
+                'No libraries were installed.' + Chr(13) + Chr(10) +
+                'Failed: ' + IntToStr(FailedCount) + ' libraries');
 end;
 
 // ----------------------------------------------------------------------------
@@ -313,30 +284,23 @@ var
   RulesFilePath : String;
   Board : IPCB_Board;
   LastChar : String;
+  Response : Integer;
 
 begin
   Board := PCBServer.GetCurrentPCBBoard;
 
   if Board = nil then
   begin
-    Application.MessageBox(
-      'Error: No PCB document is currently open.' + Chr(13) + Chr(10) +
-      'Please open a PCB file first.',
-      'MIL-Altium Rules Import',
-      MB_OK + MB_ICONERROR
-    );
+    ShowMessage('Error: No PCB document is currently open.' + Chr(13) + Chr(10) +
+                'Please open a PCB file first.');
     Exit;
   end;
 
   // Check if repo path is configured
   if not IsRepoPathValid() then
   begin
-    Application.MessageBox(
-      'MIL-Altium repository path is not configured.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      'Please run the "InitializeMILAltiumConfig" script first.',
-      'Configuration Required',
-      MB_OK + MB_ICONWARNING
-    );
+    ShowMessage('MIL-Altium repository path is not configured.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Please run the "InitializeMILAltiumConfig" script first.');
     Exit;
   end;
 
@@ -353,42 +317,149 @@ begin
 
   if not FileExists(RulesFilePath) then
   begin
-    Application.MessageBox(
-      'Error: JLC Rules.RUL file not found at:' + Chr(13) + Chr(10) +
-      RulesFilePath,
-      'File Not Found',
-      MB_OK + MB_ICONERROR
-    );
+    ShowMessage('Error: JLC Rules.RUL file not found at:' + Chr(13) + Chr(10) +
+                RulesFilePath);
     Exit;
   end;
 
-  if Application.MessageBox(
-    'This will OVERWRITE all existing design rules in the current PCB.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-    'Rules file: JLC Rules.RUL' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-    'Do you want to continue?',
-    'Confirm Rules Import',
-    MB_YESNO + MB_ICONWARNING
-  ) = IDNO then
+  Response := MessageDlg('This will OVERWRITE all existing design rules in the current PCB.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                         'Rules file: JLC Rules.RUL' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                         'Do you want to continue?',
+                         mtWarning, mbYesNo, 0);
+
+  if Response = mrNo then
   begin
-    Application.MessageBox('Rules import cancelled.', 'MIL-Altium Rules Import', MB_OK + MB_ICONINFORMATION);
+    ShowMessage('Rules import cancelled.');
     Exit;
   end;
 
   try
-    Board.ImportRulesFile(RulesFilePath);
+    // Use the RunProcess command to import rules
+    // This is the same as manually going to Design -> Rules -> Import Rules
+    RunProcess('PCB:ImportRules|FileName=' + RulesFilePath);
+
+    // Refresh the PCB display
     Board.GraphicallyInvalidate;
 
-    Application.MessageBox(
-      'Design rules imported successfully!' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
-      'JLC Rules have been applied to the current PCB.',
-      'Import Complete',
-      MB_OK + MB_ICONINFORMATION
-    );
+    ShowMessage('Design rules imported successfully!' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'JLC Rules have been applied to the current PCB.');
   except
-    Application.MessageBox(
-      'Error: Failed to import design rules.',
-      'Import Failed',
-      MB_OK + MB_ICONERROR
-    );
+    ShowMessage('Error: Failed to import design rules.');
+  end;
+end;
+
+// ----------------------------------------------------------------------------
+// SCRIPT 4: Import Board Stackup
+// Imports a 2-layer or 4-layer stackup from the configured repository
+// ----------------------------------------------------------------------------
+
+procedure ImportBoardStackup();
+var
+  RepoPath : String;
+  StackupFilePath : String;
+  Board : IPCB_Board;
+  LastChar : String;
+  Response : Integer;
+  StackupFolder : String;
+
+begin
+  Board := PCBServer.GetCurrentPCBBoard;
+
+  // Check if a PCB is open
+  if Board = nil then
+  begin
+    ShowMessage('Error: No PCB document is currently open.' + Chr(13) + Chr(10) +
+                'Please open a PCB file first.');
+    Exit;
+  end;
+
+  // Check if repo path is configured
+  if not IsRepoPathValid() then
+  begin
+    ShowMessage('MIL-Altium repository path is not configured.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Please run the "InitializeMILAltiumConfig" script first.');
+    Exit;
+  end;
+
+  // Load the repo path
+  RepoPath := LoadRepoPath();
+
+  // Ensure path ends with backslash
+  LastChar := Copy(RepoPath, Length(RepoPath), 1);
+  if LastChar <> '\' then
+    RepoPath := RepoPath + '\';
+
+  // Construct path to the stackup folder
+  StackupFolder := RepoPath + 'Rules and Stackups\';
+
+  // Verify that the Rules and Stackups folder exists
+  if not DirectoryExists(StackupFolder) then
+  begin
+    ShowMessage('Error: Rules and Stackups folder not found at:' + Chr(13) + Chr(10) +
+                StackupFolder + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Please ensure the MIL-Altium repository is configured correctly.');
+    Exit;
+  end;
+
+  // Ask the user which stackup they want to import
+  Response := MessageDlg('Which board stackup would you like to import?' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                         'Yes = 2-Layer Stackup' + Chr(13) + Chr(10) +
+                         'No  = 4-Layer Stackup',
+                         mtConfirmation, mbYesNo, 0);
+
+  // Set the stackup file path based on the user's choice
+  if Response = mrYes then
+  begin
+    // User chose 2-layer stackup
+    StackupFilePath := StackupFolder + '2-Layer.stackup';
+  end
+  else
+  begin
+    // User chose 4-layer stackup
+    StackupFilePath := StackupFolder + '4-Layer.stackup';
+  end;
+
+  // Verify that the selected stackup file exists
+  if not FileExists(StackupFilePath) then
+  begin
+    ShowMessage('Error: Stackup file not found at:' + Chr(13) + Chr(10) +
+                StackupFilePath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Please ensure the stackup file exists in the Rules and Stackups folder.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Expected filename: ' + ExtractFileName(StackupFilePath));
+    Exit;
+  end;
+
+  // Confirm before overwriting existing stackup
+  Response := MessageDlg('This will OVERWRITE the existing board stackup in the current PCB.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                         'Stackup file: ' + ExtractFileName(StackupFilePath) + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                         'Do you want to continue?',
+                         mtWarning, mbYesNo, 0);
+
+  if Response = mrNo then
+  begin
+    ShowMessage('Stackup import cancelled.');
+    Exit;
+  end;
+
+  // Import the stackup file
+  try
+    // Open the Layer Stack Manager
+    RunProcess('LayerStackManager:OpenPcbLayerStack');
+
+    // Tell the user exactly where to find the file
+    ShowMessage('The Layer Stack Manager is now open.' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'When the file dialog opens, navigate to:' + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                StackupFilePath + Chr(13) + Chr(10) + Chr(13) + Chr(10) +
+                'Click OK to open the file dialog now.');
+
+    // Open the Load Template file dialog
+    RunProcess('LayerStackManager:LoadTemplateFromFile');
+
+    // Refresh the PCB display to show the new stackup
+    Board.GraphicallyInvalidate;
+
+    ShowMessage('Stackup import complete!');
+  except
+    ShowMessage('Error: Failed to import board stackup.');
   end;
 end;

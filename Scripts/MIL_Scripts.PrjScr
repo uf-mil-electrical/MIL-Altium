@@ -67,7 +67,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Generic_ScriptingSystem]
-StartProcName=mil_scripts.pas>GetConfigFilePath
+StartProcName=mil_scripts.pas>TestOpenLayerStackManager
 
 [OutputGroup1]
 Name=Netlist Outputs
