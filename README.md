@@ -2,10 +2,12 @@
 Welcome to the MIL-Altium repo. This repo contains plenty of resources for MIL Altium projects.
 
 # Initial Setup
-<details>
-<summary>## Setting up Altium scripts</summary>
 
+## Setting up Altium scripts
 This repo uses custom scripts to make certain things in Altium easier. In order for the scripts to operate properly, please follow these steps.
+<details>
+<summary>Steps</summary>
+  
 1) Clone this repo to **C:/MIL-Altium**. This must be where the repo exists on your device.
 2) Open Altium.
 3) Go to the Preferences menu (gear icon in the top-right of Altium).
@@ -16,11 +18,11 @@ This repo uses custom scripts to make certain things in Altium easier. In order 
 8) All done! See the MIL Altium Script Guide in the Guides folder to learn about available scripts and how they work.
 </details>
 
-
-<details>
-<summary>## Installing SamacSys Library Loader</summary>
-
+## Installing SamacSys Library Loader
 SamacSys Library Loader is a very useful tool for importing component footprints. Installation of this tool is not required, but highly recommended, especially if you need to import a component into Altium in the future. Once installed, you can import pretty much any component on Mouser.com super quickly (assuming it has a part library available).
+<details>
+<summary>Steps</summary>
+  
 1) Navigate to MIL-Altium/Scripts/Altium Library Loader 2.2 Setup.exe
 2) Run this executable and follow the instructions it gives.
 3) You will need to create a SamacSys/Component Search Engine account if you do not have one already.
