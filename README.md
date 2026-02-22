@@ -1,9 +1,9 @@
 # Your one-stop Altium shop!
 Welcome to the MIL-Altium repo. This repo contains plenty of resources for MIL Altium projects.
 
-# Initial Setup
+## Initial Setup
 
-## Setting up Altium scripts
+### Setting up Altium scripts
 This repo uses custom scripts to make certain things in Altium easier. In order for the scripts to operate properly, please follow these steps.
 <details>
 <summary>Steps</summary>
@@ -18,7 +18,7 @@ This repo uses custom scripts to make certain things in Altium easier. In order 
 8) All done! See the MIL Altium Script Guide in the Guides folder to learn about available scripts and how they work.
 </details>
 
-## Installing SamacSys Library Loader
+### Installing SamacSys Library Loader
 SamacSys Library Loader is a very useful tool for importing component footprints. Installation of this tool is not required, but highly recommended, especially if you need to import a component into Altium in the future. Once installed, you can import pretty much any component on Mouser.com super quickly (assuming it has a part library available).
 <details>
 <summary>Steps</summary>
@@ -31,16 +31,16 @@ SamacSys Library Loader is a very useful tool for importing component footprints
 </details>
 
 
-# What's in this repo?
-## Part Libraries
+## What's in this repo?
+### Part Libraries
 Parts used in your projects should exist within the part libraries in this repo. If they don't exist yet, add them!
 [add guide for how to add new components to library, required steps, pull request, etc.]
 
-## Design Rules & Stackups
+### Design Rules & Stackups
 Your PCB project must use the design rules provided in this folder. Additionally, make sure to select the proper stackup for your project (2-layer or 4-layer).
 
-## Scripting
+### Scripting
 meow
 
-## Templates
+### Templates
 meow
