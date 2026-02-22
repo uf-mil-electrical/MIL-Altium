@@ -15,12 +15,12 @@ const
 // Get the path to the config file (stored in C:\Temp)
 function GetConfigFilePath(): String;
 begin
-  // Store config in C:\Temp (should exist on all Windows systems)
-  Result := 'C:\MIL-Altium\' + CONFIG_FILE;
+  // Store config in MIL-Altium repo
+  Result := 'C:\MIL-Altium\Configuration\' + CONFIG_FILE;
 
-  // Ensure the Temp directory exists
-  if not DirectoryExists('C:\MIL-Altium') then
-    CreateDir('C:\MIL-Altium');
+  // Ensure the configuration directory exists
+  if not DirectoryExists('C:\MIL-Altium\Configuration\') then
+    CreateDir('C:\MIL-Altium\Configuration\');
 end;
 
 function LoadRepoPath(): String;
