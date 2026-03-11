@@ -215,7 +215,7 @@ begin
   LibraryPaths[12] := 'Misc Components\Project Outputs for Misc Components\Misc Components.IntLib';
   LibraryPaths[13] := 'Resistors\Project Outputs for Resistors\Resistors.IntLib';
   LibraryPaths[14] := 'Switches\Project Outputs for Switches\Switches.IntLib';
-  LibraryPaths[15] := 'C:\MIL-Altium\Part Libraries\Test Points\Project Outputs for Test Points\Test Points.IntLib'
+  LibraryPaths[15] := 'Test Points\Project Outputs for Test Points\Test Points.IntLib';  
   LibraryPaths[16] := 'Transistors\Project Outputs for Transistors\Transistors.IntLib';
   LibraryPaths[17] := 'Voltage Regulators\Project Outputs for Voltage Regulators\Voltage Regulators.IntLib';
 
