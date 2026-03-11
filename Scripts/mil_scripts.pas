@@ -135,7 +135,7 @@ begin
   OpenDialog := TOpenDialog.Create(nil);
 
   try
-    OpenDialog.Title := 'Browse to MIL-Altium Repository and Select ANY File';
+    OpenDialog.Title := 'Browse to MIL-Altium Repository and select Crowned-Schwartz.png';
     OpenDialog.Filter := 'All Files (*.*)|*.*';
     OpenDialog.InitialDir := 'C:\';
 
@@ -186,7 +186,7 @@ end;
 
 // ----------------------------------------------------------------------------
 // SCRIPT 2: Import Multiple Libraries
-// Imports all 15 part libraries from the configured repository
+// Imports all 18 part libraries from the configured repository
 // ----------------------------------------------------------------------------
 
 procedure ImportMultipleLibraries();
@@ -195,7 +195,7 @@ var
   LibraryPath : String;
   InstalledCount : Integer;
   FailedCount : Integer;
-  LibraryPaths : Array[0..14] of String;
+  LibraryPaths : Array[0..17] of String;
   i : Integer;
   LastChar : String;
 
@@ -211,10 +211,13 @@ begin
   LibraryPaths[8]  := 'Inductors\Project Outputs for Inductors\Inductors.IntLib';
   LibraryPaths[9]  := 'LEDs\Project Outputs for LEDs\LEDs.IntLib';
   LibraryPaths[10] := 'MCUs\Project Outputs for MCUs\MCUs.IntLib';
-  LibraryPaths[11] := 'Misc Components\Project Outputs for Misc Components\Misc Components.IntLib';
-  LibraryPaths[12] := 'Resistors\Project Outputs for Resistors\Resistors.IntLib';
-  LibraryPaths[13] := 'Switches\Project Outputs for Switches\Switches.IntLib';
-  LibraryPaths[14] := 'Voltage Regulators\Project Outputs for Voltage Regulators\Voltage Regulators.IntLib';
+  LibraryPaths[11] := 'Memory\Project Outputs for Memory\Memory.IntLib';
+  LibraryPaths[12] := 'Misc Components\Project Outputs for Misc Components\Misc Components.IntLib';
+  LibraryPaths[13] := 'Resistors\Project Outputs for Resistors\Resistors.IntLib';
+  LibraryPaths[14] := 'Switches\Project Outputs for Switches\Switches.IntLib';
+  LibraryPaths[15] := 'C:\MIL-Altium\Part Libraries\Test Points\Project Outputs for Test Points\Test Points.IntLib'
+  LibraryPaths[16] := 'Transistors\Project Outputs for Transistors\Transistors.IntLib';
+  LibraryPaths[17] := 'Voltage Regulators\Project Outputs for Voltage Regulators\Voltage Regulators.IntLib';
 
   // Check if repo path is configured
   if not IsRepoPathValid() then
@@ -240,9 +243,9 @@ begin
 
   ShowMessage('Starting library import...' + Chr(13) + Chr(10) +
               'Part Libraries folder: ' + PartLibrariesPath + Chr(13) + Chr(10) +
-              'Installing 15 libraries...');
+              'Installing 17 libraries...');
 
-  for i := 0 to 14 do
+  for i := 0 to 17 do
   begin
     LibraryPath := PartLibrariesPath + LibraryPaths[i];
 
