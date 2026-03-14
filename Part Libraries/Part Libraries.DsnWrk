@@ -1,0 +1,38 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=Capacitors\Capacitors.LibPkg
+[Project2]
+ProjectPath=Connectors\Connectors.LibPkg
+[Project3]
+ProjectPath=Crystals and Oscillators\Crystals and Oscillators.LibPkg
+[Project4]
+ProjectPath=Devices\Devices.LibPkg
+[Project5]
+ProjectPath=Diodes\Diodes.LibPkg
+[Project6]
+ProjectPath=Ferrite Beads\Ferrite Beads.LibPkg
+[Project7]
+ProjectPath=Fuses\Fuses.LibPkg
+[Project8]
+ProjectPath=ICs\ICs.LibPkg
+[Project9]
+ProjectPath=Inductors\Inductors.LibPkg
+[Project10]
+ProjectPath=LEDs\LEDs.LibPkg
+[Project11]
+ProjectPath=MCUs\MCUs.LibPkg
+[Project12]
+ProjectPath=Memory\Memory.LibPkg
+[Project13]
+ProjectPath=Misc Components\Misc Components.LibPkg
+[Project14]
+ProjectPath=Resistors\Resistors.LibPkg
+[Project15]
+ProjectPath=Switches\Switches.LibPkg
+[Project16]
+ProjectPath=Test Points\Test Points.LibPkg
+[Project17]
+ProjectPath=Transistors\Transistors.LibPkg
+[Project18]
+ProjectPath=Voltage Regulators\Voltage Regulators.LibPkg
