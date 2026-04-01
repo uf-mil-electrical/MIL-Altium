@@ -243,7 +243,7 @@ begin
 
   ShowMessage('Starting library import...' + Chr(13) + Chr(10) +
               'Part Libraries folder: ' + PartLibrariesPath + Chr(13) + Chr(10) +
-              'Installing 17 libraries...');
+              'Installing 18 libraries...');
 
   for i := 0 to 17 do
   begin
