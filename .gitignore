@@ -17,3 +17,6 @@
 
 # Ignore script config files that are unique to user's computer
 *.ini
+
+# Ignore Altium "Backups" folder
+Configuration/Backups/
