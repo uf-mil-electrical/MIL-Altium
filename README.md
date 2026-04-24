@@ -1,3 +1,6 @@
+> [!NOTE]
+> Altium scripts are not yet totally functional. If something isn't working, let Russell know.
+
 # Your one-stop Altium shop!
 Welcome to the MIL-Altium repo. This repo contains plenty of resources for MIL Altium projects.
 
