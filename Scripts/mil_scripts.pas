@@ -186,7 +186,7 @@ end;
 
 // ----------------------------------------------------------------------------
 // SCRIPT 2: Import Multiple Libraries
-// Imports all 18 part libraries from the configured repository
+// Imports all 19 part libraries from the configured repository
 // ----------------------------------------------------------------------------
 
 procedure ImportMultipleLibraries();
@@ -195,7 +195,7 @@ var
   LibraryPath : String;
   InstalledCount : Integer;
   FailedCount : Integer;
-  LibraryPaths : Array[0..17] of String;
+  LibraryPaths : Array[0..18] of String;
   i : Integer;
   LastChar : String;
 
@@ -213,11 +213,12 @@ begin
   LibraryPaths[10] := 'MCUs\Project Outputs for MCUs\MCUs.IntLib';
   LibraryPaths[11] := 'Memory\Project Outputs for Memory\Memory.IntLib';
   LibraryPaths[12] := 'Misc Components\Project Outputs for Misc Components\Misc Components.IntLib';
-  LibraryPaths[13] := 'Resistors\Project Outputs for Resistors\Resistors.IntLib';
-  LibraryPaths[14] := 'Switches\Project Outputs for Switches\Switches.IntLib';
-  LibraryPaths[15] := 'Test Points\Project Outputs for Test Points\Test Points.IntLib';  
-  LibraryPaths[16] := 'Transistors\Project Outputs for Transistors\Transistors.IntLib';
-  LibraryPaths[17] := 'Voltage Regulators\Project Outputs for Voltage Regulators\Voltage Regulators.IntLib';
+  LibraryPaths[13] := 'Mounts, Pads, Vias\Project Outputs for Mounts, Pads, Vias\Mounts, Pads, Vias.IntLib';
+  LibraryPaths[14] := 'Resistors\Project Outputs for Resistors\Resistors.IntLib';
+  LibraryPaths[15] := 'Switches\Project Outputs for Switches\Switches.IntLib';
+  LibraryPaths[16] := 'Test Points\Project Outputs for Test Points\Test Points.IntLib';
+  LibraryPaths[17] := 'Transistors\Project Outputs for Transistors\Transistors.IntLib';
+  LibraryPaths[18] := 'Voltage Regulators\Project Outputs for Voltage Regulators\Voltage Regulators.IntLib';
 
   // Check if repo path is configured
   if not IsRepoPathValid() then
@@ -243,9 +244,9 @@ begin
 
   ShowMessage('Starting library import...' + Chr(13) + Chr(10) +
               'Part Libraries folder: ' + PartLibrariesPath + Chr(13) + Chr(10) +
-              'Installing 18 libraries...');
+              'Installing 19 libraries...');
 
-  for i := 0 to 17 do
+  for i := 0 to 18 do
   begin
     LibraryPath := PartLibrariesPath + LibraryPaths[i];
 

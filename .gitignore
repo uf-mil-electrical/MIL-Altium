@@ -5,6 +5,8 @@
 *.PrjPcb.Zip
 *.LOG
 *.SchDocPreview
+*.PcbDocPreview
+*.BomDocPreview
 
 # Ignore Altium Library backup files
 *.SchLib.Zip
@@ -20,3 +22,12 @@
 
 # Ignore Altium "Backups" folder
 Configuration/Backups/
+
+# Ignore project outputs
+*.WAS
+*.drc
+*.APR_LIB
+*.EXTREP
+*.LEP
+*.REP
+*.gbr
