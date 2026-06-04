@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [STM32U575-refrence.PrjPcb]
+   Generated File[STM32 refrence board.TXT]
+   Generated File[STM32 refrence board.LDP]
+   Generated File[STM32 refrence board.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 3:15:11 PM On 6/4/2026
