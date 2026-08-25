@@ -3,6 +3,9 @@
 *.SchDoc.Zip
 *.BomDoc.Zip
 *.PrjPcb.Zip
+*.MbaDoc.Zip
+*.PrjMbd.Zip
+*.MbsDoc.Zip
 *.LOG
 *.SchDocPreview
 *.PcbDocPreview
