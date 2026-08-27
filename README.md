@@ -31,12 +31,11 @@ This repo uses custom scripts to make certain things in Altium easier. In order 
 <details>
 <summary>Steps</summary>
   
-1) Clone this repo to **C:/MIL-Altium**. This must be where the repo exists on your device.
-2) Open Altium.
-3) Go to the Preferences menu (gear icon in the top-right of Altium).
-4) Click "Load" near the bottom of the Preferences menu. Select C:/MIL-Altium/Configuration/MIL_Config.DXPPrf. Click "Apply All" in the smal window that appears. It will take a second to update all Altium config settings. Allow "Altium Settings Elevator" to run with administrative priviledges when prompted.
-5) Restart Altium to ensure all changes have taken effect.
-6) Click on the MIL dropdown menu on your toolbar. This should be visible from the schematic or PCB editor.
-7) Click the "Init MIL Scripts" command. This will configure the scripts to work on your device. Follow the instructions that appear.
-8) All done! See the MIL Altium Script Guide in the Guides folder to learn about available scripts and how they work.
+1) Open Altium.
+2) Go to the Preferences menu (gear icon in the top-right of Altium).
+3) Click "Load" near the bottom of the Preferences menu. Select C:/MIL-Altium/Configuration/MIL_Config.DXPPrf. Click "Apply All" in the smal window that appears. It will take a second to update all Altium config settings. Allow "Altium Settings Elevator" to run with administrative priviledges when prompted.
+4) Restart Altium to ensure all changes have taken effect.
+5) Click on the MIL dropdown menu on your toolbar. This should be visible from the schematic or PCB editor.
+6) Click the "Init MIL Scripts" command. This will configure the scripts to work on your device. Follow the instructions that appear.
+7) All done! See the MIL Altium Script Guide in the Guides folder to learn about available scripts and how they work.
 </details>
