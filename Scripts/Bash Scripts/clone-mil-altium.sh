@@ -6,21 +6,17 @@ DEST="C:/MIL-Altium"
 
 # Check git is installed
 if ! command -v git &> /dev/null; then
-    echo "Git is not installed. Please install it from https://git-scm.com/download/win and re-run this script."
+    echo "Git is not installed. Please install it from https://gitforwindows.org/ and re-run this script."
     exit 1
 fi
 
-if [ -d "$DEST" ]; then
-    if [ -d "$DEST/.git" ]; then
-        echo "Repo already exists at $DEST. Pulling latest changes..."
-        git -C "$DEST" pull
-    else
-        echo "$DEST exists but is not a git repo. Aborting to avoid overwriting files."
-        exit 1
-    fi
-else
-    echo "Cloning into $DEST..."
-    git clone "$REPO_URL" "$DEST"
+# Abort if destination already exists
+if [ -e "$DEST" ]; then
+    echo "$DEST already exists. Aborting to avoid overwriting or duplicating files."
+    exit 1
 fi
+
+echo "Cloning into $DEST..."
+git clone "$REPO_URL" "$DEST"
 
 echo "Done."
