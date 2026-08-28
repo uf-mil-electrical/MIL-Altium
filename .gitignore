@@ -25,6 +25,7 @@
 
 # Ignore Altium "Backups" folder
 Configuration/Backups/
+Configuration/Temp/
 
 # Ignore project outputs
 *.WAS
