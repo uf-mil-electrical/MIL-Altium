@@ -39,4 +39,5 @@ This repo uses custom scripts to make certain things in Altium easier. In order 
 5) Open a schematic document. Go to File >> New >> Schematic.
 6) Click on the MIL dropdown menu on your toolbar.
 7) Click the "Init MIL Scripts" command. This will configure the scripts to work on your device. Follow the instructions that appear.
+8) Click the MIL dropdown again, but this time clock on "Import MIL Libraries". This will import our part libraries for you.
 </details>
